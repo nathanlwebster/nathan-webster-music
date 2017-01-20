@@ -55,9 +55,6 @@ module.exports.routes = {
   },
   '/marker/list': {
     view: 'marker/list'
-  },
-  '/cool': {
-    view: 'cool'
   }
 
   /***************************************************************************
