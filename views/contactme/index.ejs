@@ -1,0 +1,55 @@
+
+
+<body class="contact" ng-app="validationApp" ng-controller="mainController">
+<div class="container-fluid lower">
+  <div class="col-sm-12 col-md-1">
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <h1 id="hear">Hey there.</h1>
+    <p class="hear">If you'd like to make a recording, post my music on your website, or anything else that falls outside of normal church or personal use, I'd love to hear from you. </p>
+    <p class="hear">If you need an arrangement, or need one of my current arrangements in a different key, please let me know. I can't accomodate every request, but I'll do my best to help out.</p>
+  </div>
+  <div class="col-sm-12 col-md-1">
+  </div>
+  <div class="col-sm-12 col-md-5 form">
+   <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+    <div class="form-group">
+      <!-- NAME -->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="user.name" required>
+          <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Your name is required.</p>
+      </div>
+
+       <!-- Comment -->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.message.$invalid && !userForm.message.$pristine }">
+          <label>Message</label>
+          <input type="textarea" name="message" class="form-control" ng-model="user.message" maxlength="250">
+          <p ng-show="userForm.message.$invalid && !userForm.message.$pristine" class="help-block">I suppose you don't have to type something, but that seems silly.</p>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" ng-model="user.email">
+          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+
+    </form>
+   </div>
+   <div class="col-sm-12 col-md-1">
+  </div>
+  <div class="col-sm-12 letter" ng-show="!userForm.name.$invalid && !userForm.name.$pristine">
+    <h3 >Dear Nathan,</h3>
+    <h3 ng-show="!userForm.message.$invalid && !userForm.message.$pristine">{{user.message}}</h3>
+    <h3 ng-show="!userForm.name.$invalid && !userForm.name.$pristine" class="signed">Sincerely,</h3>
+    <h3 ng-show="!userForm.name.$invalid && !userForm.name.$pristine" class="signed">{{user.name}}</h3>
+    <h3 ng-show="!userForm.email.$invalid && !userForm.email.$pristine">P.S. If you need to get in touch with me, my email address is {{user.email}}.</h3>
+    </div>
+</div>
+
+</body>

@@ -1,0 +1,17 @@
+
+<body class="downloads">
+  <h1 id="pageHeader">This is the music page.</h1>
+    <div ng-app="musicApp" ng-controller="musicCtrl">
+      <div class="container-fluid">
+      <div class="pdfDisplay col-sm-12 col-md-3" ng-repeat="x in musicList">
+        <img ng-src="{{ x.fileName }}"/>
+        <h2>{{ x.title }}</h2>
+      </div>
+    </div>
+    </div>
+
+
+
+<script src="js/musicApp.js"></script>
+<script src="js/musicCtrl.js"></script>
+</body>
